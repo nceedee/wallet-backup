@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { SideBar } from "./components/GlobalLayout/SideBar/SideBar";
+import { SideBar } from "./components/Layouts/SideBar/SideBar";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
-import { Users } from "./components/Pages/Dashboard/Users/Users"; 
+import { Users } from "./components/Pages/Dashboard/Users/Users";
 
 const App = () => {
 	return (

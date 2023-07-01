@@ -1,5 +1,5 @@
-import { Header } from "../../GlobalLayout/Header";
-import { UsersInfo } from "../../GlobalLayout/UsersInfo";
+import { Header } from "../../Layouts/Header";
+import { UsersInfo } from "../../Layouts/UsersInfo";
 
 export const Dashboard = () => {
 	return (
@@ -10,7 +10,7 @@ export const Dashboard = () => {
 					<UsersInfo />
 				</div>
 				<div>
-					
+
 				</div>
 			</div>
 		</section>
