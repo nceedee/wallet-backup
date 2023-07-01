@@ -1,7 +1,7 @@
 import   { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import {  Link } from "react-router-dom";
-import { menus } from "./MenuLinks/MenuLinks";
+import { menus } from "./menuLinks/menuLinks";
 
 export const SideBar = () => {
 	const [open, setOpen] = useState(true);
@@ -21,7 +21,6 @@ export const SideBar = () => {
 			<div className="mt-4  flex flex-col gap-4 relative">
 				{menus.map((menu, i) => (
 					<Link
-						title={menu.name}
 						to={menu.link}
 						key={i}
 						className={`${menu.margin && "mt-5"} ${
@@ -36,12 +35,12 @@ export const SideBar = () => {
 							{menu.name}
 						</h2>
 
-						{/* <h2
+						<h2
 								className={`${
 									open && "hidden"
-								} absolute  left-48 bg-accent font-semibold whitespace-pre text-white rounded-md drop-shadow-lg w-0 px-0 py-0 overflow-hidden lowercase group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}>
+								} fixed  left-48 bg-accent font-semibold whitespace-pre text-white rounded-md drop-shadow-lg w-0 px-0 py-0 overflow-hidden lowercase group-hover:px-2 group-hover:py-1 group-hover:left-16 group-hover:duration-300 group-hover:w-fit`}>
 								{menu.name}
-							</h2> */}
+							</h2>
 					</Link>
 				))}
 			</div>
