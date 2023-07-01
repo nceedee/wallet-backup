@@ -1,18 +1,17 @@
-import { Header } from "../../GlobalLayout/Header";
-import { UsersInfo } from "../../GlobalLayout/UsersInfo";
+import { MaxCard } from "../../Global/Card/MaxCard";
+import { UsersInfo } from "../../Layouts/UsersInfo";
 
 export const Dashboard = () => {
 	return (
-		<section className="py-3 px-4 w-full bg-primary">
-			<Header />
-			<div>
-				<div>
+		<MaxCard className="w-full ">
+			<div className="flex ">
+				<div className="">
 					<UsersInfo />
 				</div>
 				<div>
-					
+					<div >hello</div>
 				</div>
 			</div>
-		</section>
-	)
-}
+		</MaxCard>
+	);
+};
