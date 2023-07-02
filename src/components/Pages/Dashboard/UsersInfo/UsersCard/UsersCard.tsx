@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Card } from "../Card";
+import { Card } from "../../../../Global/Card/Card";
 import { FiTrendingUp } from "react-icons/fi";
 
 type UserCardType = React.ComponentProps<"div"> & {
@@ -16,7 +16,7 @@ export const UserCard = ({
 	...props
 }: UserCardType) => {
 	return (
-		<Card className="sm:w-[100%] lg:w-[25%]">
+		<Card className="sm:w-[100%] lg:w-[33.3%]">
 			<div className="flex justify-between">
 				{info}
 				<div className="bg-[rgba(0,153,153,.4)] rounded-full text-secondary p-2">

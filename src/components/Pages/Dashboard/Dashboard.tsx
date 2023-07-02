@@ -4,12 +4,12 @@ import { ReviewUsers } from "./ReviewUsers/ReviewUsers";
 
 export const Dashboard = () => {
 	return (
-		<MaxCard className="w-full bg-red-400 ">
-			<div className="flex">
-				<div className="w-full bg-yellow-300">
+		<MaxCard className="w-full   ">
+			<div className="flex flex-wrap lg:flex-nowrap  lg:space-x-6">
+				<div className="w-full ">
 					<UsersInfo />
 				</div>
-				<div className="w-full">
+				<div className="lg:w-1/2">
 					<ReviewUsers />
 				</div>
 			</div>
