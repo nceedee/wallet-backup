@@ -2,9 +2,9 @@ import { Card } from "../../../Global/Card/Card";
 import { ActiveUsers } from "./Active/ActiveUsers";
 import { BlockedUsers } from "./BlockedUsers/BlockedUsers";
 
-export const ReviewUsers = () => {
+export const UserStatusCard = () => {
 	return (
-		<Card >
+		<Card>
 			<ActiveUsers />
 			<BlockedUsers />
 		</Card>

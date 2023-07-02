@@ -1,6 +1,7 @@
 import { MaxCard } from "../../Global/Card/MaxCard/MaxCard";
+import BetManagement from "./BetManagement/BetManagement";
 import { UsersInfo } from "./UsersInfo/UsersInfo";
-import { ReviewUsers } from "./ReviewUsers/ReviewUsers";
+import { UserStatusCard } from "./UserStatusCard/UserStatusCard";
 
 export const Dashboard = () => {
 	return (
@@ -8,9 +9,10 @@ export const Dashboard = () => {
 			<div className="flex flex-wrap lg:flex-nowrap  lg:space-x-6">
 				<div className="w-full ">
 					<UsersInfo />
+					<BetManagement/>
 				</div>
 				<div className="lg:w-1/2">
-					<ReviewUsers />
+					<UserStatusCard />
 				</div>
 			</div>
 		</MaxCard>
