@@ -1,5 +1,5 @@
 import { Card } from "../../../Global/Card/Card";
 
-export   function BetManagement() {
+export const BetManagement = () => {	
 	return <Card>BetManagement</Card>;
 }

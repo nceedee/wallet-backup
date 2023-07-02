@@ -3,8 +3,6 @@ module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
 		fontFamily: {
-			// roboto: "Roboto, sans-serif",
-			// mont: "Montserrat, sans-serif", //Proxima Nova alt
 			inter: "Inter Tight, sans-serif",
 		},
 		extend: {
