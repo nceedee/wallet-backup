@@ -1,0 +1,26 @@
+{
+  "extends": ["next/core-web-vitals", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-console": "warn",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120
+      },
+      {
+        "usePrettierrc": true
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 import { MaxCard } from "../../Global/Card/MaxCard/MaxCard";
-import BetManagement from "./BetManagement/BetManagement";
 import { UsersInfo } from "./UsersInfo/UsersInfo";
+import {BetManagement} from "./BetManagement/BetManagement";
 import { UserStatusCard } from "./UserStatusCard/UserStatusCard";
 
 export const Dashboard = () => {
