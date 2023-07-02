@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import userProfile from '../../../assets/image/avatar.jpg'
+import userProfile from '../../../assets/image/avatar.jpg';
 
 type ProfileType = React.ComponentProps<"div"> & { icon?: ReactNode };
 
