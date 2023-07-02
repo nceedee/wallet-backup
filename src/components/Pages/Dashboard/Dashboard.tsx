@@ -5,7 +5,7 @@ import { UsersInfo } from "./UsersInfo/UsersInfo";
 
 export const Dashboard = () => {
 	return (
-		<MaxCard className="w-full   ">
+		<MaxCard className="w-full">
 			<div className="flex flex-wrap lg:flex-nowrap  lg:space-x-6">
 				<div className="w-full space-y-3">
 					<UsersInfo/>
