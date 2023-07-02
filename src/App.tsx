@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { SideBar } from "./components/Layouts/SideBar/SideBar";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
-import { Users } from "./components/Pages/Dashboard/Users/Users";
-import { Header } from "./components/Layouts/Header";
+import { Users } from "./components/Pages/Users/Users";
+import { Header } from "./components/Layouts/Header/Header";
 
 const App = () => {
 	return (
