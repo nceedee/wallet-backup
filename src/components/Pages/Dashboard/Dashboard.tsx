@@ -1,5 +1,6 @@
 import { MaxCard } from "../../Global/Card/MaxCard";
 import { UsersInfo } from "../../Layouts/UsersInfo";
+import { ReviewUsers } from "./ReviewUsers/ReviewUsers";
 
 export const Dashboard = () => {
 	return (
@@ -9,7 +10,7 @@ export const Dashboard = () => {
 					<UsersInfo />
 				</div>
 				<div>
-					<div >hello</div>
+					<ReviewUsers />
 				</div>
 			</div>
 		</MaxCard>
