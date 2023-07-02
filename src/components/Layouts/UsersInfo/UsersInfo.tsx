@@ -1,6 +1,6 @@
-import { ActiveUsers } from "./UsersInfo/ActiveUsers/ActiveUsers"
-import { AllUsers } from "./UsersInfo/AllUsers/AllUsers"
-import { UsersTotalAmountOnBet } from "./UsersInfo/UsersTotalAmountOnBet/UsersTotalAmountOnBet"
+import { ActiveUsers } from "./ActiveUsers/ActiveUsers"
+import { AllUsers } from "./AllUsers/AllUsers"
+import { UsersTotalAmountOnBet } from "./UsersTotalAmountOnBet/UsersTotalAmountOnBet"
 
 export const UsersInfo = () => {
     return (
