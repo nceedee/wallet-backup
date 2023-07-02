@@ -1,4 +1,4 @@
-import { MaxCard } from "../../../Global/Card/MaxCard";
+import { MaxCard } from "../../Global/Card/MaxCard/MaxCard";
 
 export const Users = () => {
 	return (
