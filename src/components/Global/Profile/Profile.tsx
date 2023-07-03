@@ -13,7 +13,7 @@ export const Profile = ({ className, ...props }: ProfileType) => {
       />
       <div className="flex items-center space-x-1">
         <h4 className="text-sm text-black">Administration</h4>
-        <MdKeyboardArrowDown className="text-gray-500" />I
+        <MdKeyboardArrowDown className="text-gray-500" />
       </div>
     </div>
   );
