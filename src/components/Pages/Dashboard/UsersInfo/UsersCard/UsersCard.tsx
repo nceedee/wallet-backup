@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { FiTrendingUp } from "react-icons/fi";
 import { Card } from "../../../../Global/Card/Card";
+import { TextWrap } from "../../../../Global/TextWrap/TextWrap";
 
 type UserCardType = React.ComponentProps<"div"> & {
   icon?: ReactNode;
@@ -16,7 +17,7 @@ export const UserCard = ({ className, icon, info, percent, ...props }: UserCardT
         <div className="rounded-full bg-[rgba(0,153,153,.4)] p-2 text-secondary">{icon}</div>
       </div>
       <div className="mt-3">
-        <h1 className="text-xl font-bold">NaN</h1>
+        <TextWrap>NaN</TextWrap>
       </div>
       <div className="mt-3">
         <div className="flex items-center space-x-4 text-[12px] text-green-500">

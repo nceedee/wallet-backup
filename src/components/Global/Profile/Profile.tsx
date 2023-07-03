@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import userProfile from "../../../assets/image/avatar.jpg";
-
+import userProfile from "../../../assets/image/avatar.png";
 type ProfileType = React.ComponentProps<"div"> & { icon?: ReactNode };
 
 export const Profile = ({ className, ...props }: ProfileType) => {
@@ -14,7 +13,7 @@ export const Profile = ({ className, ...props }: ProfileType) => {
       />
       <div className="flex items-center space-x-1">
         <h4 className="text-sm text-black">Administration</h4>
-        <MdKeyboardArrowDown className="text-gray-500" />
+        <MdKeyboardArrowDown className="text-gray-500" />I
       </div>
     </div>
   );
