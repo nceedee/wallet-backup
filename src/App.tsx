@@ -5,11 +5,11 @@ import { Users } from "./components/Pages/Users/Users";
 
 const App = () => {
   return (
-    <div className="flex h-[100vh] w-full bg-primary font-inter">
+    <div className="flex h-[100vh] w-full  bg-primary font-inter tracking-wide">
       <div>
         <SideBar />
       </div>
-      <div className="w-full ">
+      <div className="w-full overflow-y-scroll">
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/users" element={<Users />}></Route>
