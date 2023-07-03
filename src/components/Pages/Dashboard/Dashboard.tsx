@@ -6,7 +6,7 @@ import { UserStatusCard } from "./UserStatusCard/UserStatusCard";
 export const Dashboard = () => {
   return (
     <MaxCard className="w-full">
-      <div className="flex flex-wrap lg:flex-nowrap  lg:space-x-6">
+      <div className="flex flex-wrap lg:flex-nowrap  lg:space-x-9">
         <div className="w-full space-y-3">
           <UsersInfo />
           <BetManagement />

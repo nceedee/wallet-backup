@@ -6,7 +6,7 @@ import { Users } from "./components/Pages/Users/Users";
 
 const App = () => {
   return (
-    <div className="flex h-[100vh] w-full bg-primary font-inter">
+    <div className="flex h-[100vh] w-full bg-primary font-inter tracking-wide">
       <div>
         <SideBar />
       </div>
