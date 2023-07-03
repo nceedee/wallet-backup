@@ -1,11 +1,11 @@
-import { FiBell } from "react-icons/fi"
-import { Profile } from "../../../Global/Profile/Profile"
+import { FiBell } from "react-icons/fi";
+import { Profile } from "../../../Global/Profile/Profile";
 
 export const UserDetail = () => {
-    return (
-        <div className="flex items-center space-x-5">
-            <FiBell className="text-2xl"/>
-            <Profile/>
-        </div>
-    )
-}
+  return (
+    <div className="flex items-center space-x-5">
+      <FiBell className="text-2xl" />
+      <Profile />
+    </div>
+  );
+};

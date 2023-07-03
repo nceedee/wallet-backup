@@ -1,7 +1,3 @@
 export const UserInfoTable = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};

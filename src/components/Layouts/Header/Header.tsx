@@ -1,9 +1,9 @@
-import { RouterName } from "./RouterName"; 
+import { RouterName } from "./RouterName";
 
 export const Header = () => {
   return (
     <div>
-      <RouterName routerName='Dashboard' />
+      <RouterName routerName="Dashboard" />
     </div>
   );
-}
+};

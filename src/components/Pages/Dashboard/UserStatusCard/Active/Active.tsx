@@ -3,7 +3,7 @@ import { TextWrap } from "../../../../Global/TextWrap/TextWrap";
 export const ActiveUsers = () => {
   return (
     <div className="mb-9">
-      <TextWrap className=" upperc ase text-lg tracking-wide">Active Users</TextWrap>
+      <TextWrap>Active Users</TextWrap>
       <div className="mt-5 space-y-3">
         <div className="flex items-center space-x-3">
           <div>
