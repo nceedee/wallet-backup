@@ -1,15 +1,17 @@
-import { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { useSideBar } from "./hook/useSideBar";
 import { menus } from "./menuLinks/menuLinks";
 
 export const SideBar = () => {
-  const [open, setOpen] = useState(true);
-
+  const { open, toggleSideBar } = useSideBar();
   return (
-    <div className={` min-h-screen bg-secondary ${open ? "w-72" : "w-16"} px-4 text-gray-100 duration-500 `}>
+    <div
+      className={`hidden min-h-screen bg-secondary px-4
+         text-gray-100 duration-500  lg:block ${open ? " w-72" : " w-16"} `}
+    >
       <div className="flex justify-end py-5">
-        <HiMenuAlt3 size={26} className="cursor-pointer" onClick={() => setOpen(!open)} />
+        <HiMenuAlt3 size={26} className="cursor-pointer" onClick={toggleSideBar} />
       </div>
       <div className="relative  mt-4 flex flex-col gap-4">
         {menus.map((menu, i) => (
