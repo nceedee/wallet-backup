@@ -1,23 +1,21 @@
 import React, { useState } from "react";
-
-interface Bet {
-  id: number;
-  team1: string;
-  team2: string;
-  odd: number;
-}
-
+import { useBets } from "../../../../hooks/usePostedBets";
+import { Bet } from "../CreateBetForm/Bet";
 export const useCreateBet = () => {
   const [bets, setBets] = useState<Bet[]>([]);
   const [team1, setTeam1] = useState("");
   const [team2, setTeam2] = useState("");
-  const [odd, setOdd] = useState("");
+  const [odd1, setOdd1] = useState("");
+  const [odd2, setOdd2] = useState("");
+  const [oddx, setOddx] = useState("");
+  const [stadium, setStadium] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
+  const { mutation } = useBets();
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (team1 === "" || team2 === "" || odd === "") {
+    if (team1 === "" || team2 === "" || odd1 === "" || odd2 === "" || oddx === "" || stadium === "") {
       setShowAlert(true);
       return;
     }
@@ -28,18 +26,43 @@ export const useCreateBet = () => {
       id: newBetId,
       team1,
       team2,
-      odd: parseFloat(odd),
+      odd1: parseFloat(odd1),
+      odd2: parseFloat(odd2),
+      oddx: parseFloat(oddx),
+      stadium,
     };
 
     setBets([...bets, newBet]);
+
+    mutation.mutate(newBet);
+
     EmptyInput();
   };
 
   const EmptyInput = () => {
     setTeam1("");
     setTeam2("");
-    setOdd("");
+    setOdd1("");
+    setOdd2("");
+    setOddx("");
   };
 
-  return { setShowAlert, handleSubmit, team1, team2, bets, odd, showAlert, setOdd, setTeam1, setTeam2 };
+  return {
+    setShowAlert,
+    handleSubmit,
+    team1,
+    team2,
+    bets,
+    odd1,
+    odd2,
+    oddx,
+    showAlert,
+    setOdd1,
+    setOdd2,
+    setOddx,
+    setTeam1,
+    setTeam2,
+    stadium,
+    setStadium,
+  };
 };

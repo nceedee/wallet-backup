@@ -14,8 +14,8 @@ const App = () => {
       <div className="w-full overflow-y-scroll">
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/users" element={<Users />}></Route>
-          <Route path="/createbet" element={<CreateBet />}></Route>
+          <Route path="users" element={<Users />}></Route>
+          <Route path="createbet" element={<CreateBet />}></Route>
           <Route path="viewbets" element={<ViewBets />}></Route>
         </Routes>
       </div>
