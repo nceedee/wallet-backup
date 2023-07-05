@@ -1,7 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { SideBar } from "./components/Layouts/SideBar/SideBar";
+import { CreateBet } from "./components/Pages/CreateBets/CreateBets";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
 import { Users } from "./components/Pages/Users/Users";
+import { ViewBets } from "./components/Pages/ViewBets/ViewBets";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/users" element={<Users />}></Route>
+          <Route path="/createbet" element={<CreateBet />}></Route>
+          <Route path="viewbets" element={<ViewBets />}></Route>
         </Routes>
       </div>
     </div>
