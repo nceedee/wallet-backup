@@ -23,7 +23,7 @@ export const MobileSideBar = () => {
             to={menu.link}
             key={i}
             className={`${menu.margin && "mt-5"} ${
-              open ? "p-2" : "p-1"
+              open ? "p-1" : "px-5 py-2"
             } first-letter: link group relative flex items-center space-x-2 overflow-hidden rounded-md text-sm font-medium capitalize hover:bg-accent`}
           >
             <menu.icon size={20} className={`${open && "w-full"}`} />
