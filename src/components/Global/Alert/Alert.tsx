@@ -1,11 +1,12 @@
 import { Alert } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 interface AlertProps {
   onClose: () => void;
+  children: ReactNode;
 }
 
-export const AlertError: React.FC<AlertProps> = ({ onClose }) => {
+export const AlertError: React.FC<AlertProps> = ({ onClose, children }) => {
   const [showAlert, setShowAlert] = useState(true);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const AlertError: React.FC<AlertProps> = ({ onClose }) => {
 
   return (
     <div>
-      <Alert severity="error">Your input can not be left empty</Alert>
+      <Alert severity="error">{children}</Alert>
     </div>
   );
 };
