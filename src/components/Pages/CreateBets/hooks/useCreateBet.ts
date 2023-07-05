@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useBets } from "../../../../hooks/usePostedBets";
+import { useBets } from "../../../Global/hooks/usePostedBets";
 import { Bet } from "../CreateBetForm/Bet";
 export const useCreateBet = () => {
   const [bets, setBets] = useState<Bet[]>([]);
@@ -20,10 +20,7 @@ export const useCreateBet = () => {
       return;
     }
 
-    const newBetId = bets.length + 1;
-
     const newBet: Bet = {
-      id: newBetId,
       team1,
       team2,
       odd1: parseFloat(odd1),

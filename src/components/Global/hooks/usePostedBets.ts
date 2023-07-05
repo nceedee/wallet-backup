@@ -1,6 +1,6 @@
 import "firebase/firestore";
 import { useMutation } from "react-query";
-import { Bet } from "../components/Pages/CreateBets/CreateBetForm/Bet";
+import { Bet } from "../../Pages/CreateBets/CreateBetForm/Bet";
 
 export const useBets = () => {
   const createBet = async (betData: Bet) => {

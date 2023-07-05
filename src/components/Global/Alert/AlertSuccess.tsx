@@ -6,7 +6,7 @@ interface AlertProps {
   children: ReactNode;
 }
 
-export const AlertError: React.FC<AlertProps> = ({ onClose, children }) => {
+export const AlertSuccess: React.FC<AlertProps> = ({ onClose, children }) => {
   const [showAlert, setShowAlert] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const AlertError: React.FC<AlertProps> = ({ onClose, children }) => {
 
   return (
     <div>
-      <Alert severity="error">{children}</Alert>
+      <Alert severity="success">{children}</Alert>
     </div>
   );
 };
