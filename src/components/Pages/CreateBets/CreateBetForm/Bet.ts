@@ -1,5 +1,5 @@
 export interface Bet {
-  id?: number;
+  id?: string;
   team1: string;
   team2: string;
   odd1: number;

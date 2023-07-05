@@ -1,8 +1,9 @@
-import { useFetchedBets } from "../../../../hooks/useFetchedBets";
 import { AlertError } from "../../../Global/Alert/Alert";
+import { AlertSuccess } from "../../../Global/Alert/AlertSuccess";
 import { Button } from "../../../Global/Button/Button";
 import { Card } from "../../../Global/Card/Card";
 import { MaxCard } from "../../../Global/Card/MaxCard/MaxCard";
+import { useFetchedBets } from "../../../Global/hooks/useFetchedBets";
 import { Input } from "../../../Global/Input/Input";
 import { useCreateBet } from "../hooks/useCreateBet";
 import { Bet } from "./Bet";
@@ -27,7 +28,7 @@ export const BetForm: React.FC = () => {
     setOddx,
   } = useCreateBet();
 
-  const { betData } = useFetchedBets();
+  const { betData, error, success } = useFetchedBets();
 
   const stopInput = () => {
     return false;
@@ -69,6 +70,8 @@ export const BetForm: React.FC = () => {
         </form>
 
         {showAlert ? <AlertError onClose={() => setShowAlert(false)}>Your input can not be left empty</AlertError> : ""}
+        {success ? <AlertSuccess onClose={() => setShowAlert(false)}>Sent Successfull</AlertSuccess> : false}
+        {error ? <AlertError onClose={() => setShowAlert(false)}>Check Your Internet Connection</AlertError> : false}
         {bets.length > 0 && (
           <div className="p-4">
             <h1 className="font-bold uppercase">Created Bets:</h1>
