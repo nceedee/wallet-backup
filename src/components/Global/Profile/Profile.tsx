@@ -12,7 +12,7 @@ export const Profile = ({ className, ...props }: ProfileType) => {
         alt="profile"
       />
       <div className="flex items-center space-x-1">
-        <h4 className="text-sm text-black">Administration</h4>
+        <h4 className="text-sm text-black">Sign In</h4>
         <MdKeyboardArrowDown className="text-gray-500" />
       </div>
     </div>

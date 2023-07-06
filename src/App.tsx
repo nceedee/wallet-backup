@@ -1,9 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { SideBar } from "./components/Layouts/SideBar/SideBar";
-import { CreateBet } from "./components/Pages/CreateBets/CreateBets";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
-import { Users } from "./components/Pages/Users/Users";
-import { ViewBets } from "./components/Pages/ViewBets/ViewBets";
+import { TransactionHistory } from "./components/Pages/TransactionHistory/TransactionHistory";
 
 const App = () => {
   return (
@@ -14,9 +12,7 @@ const App = () => {
       <div className="w-full overflow-y-scroll">
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-          <Route path="users" element={<Users />}></Route>
-          <Route path="createbet" element={<CreateBet />}></Route>
-          <Route path="viewbets" element={<ViewBets />}></Route>
+          <Route path="transaction-history" element={<TransactionHistory />}></Route>
         </Routes>
       </div>
     </div>
