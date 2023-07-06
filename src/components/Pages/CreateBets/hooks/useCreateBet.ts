@@ -20,7 +20,10 @@ export const useCreateBet = () => {
       return;
     }
 
+    const newId = Math.floor(Math.random() * 100);
+
     const newBet: Bet = {
+      id: newId,
       team1,
       team2,
       odd1: parseFloat(odd1),
@@ -29,6 +32,7 @@ export const useCreateBet = () => {
       stadium,
     };
 
+    console.log(newId, newBet);
     setBets([...bets, newBet]);
 
     mutation.mutate(newBet);

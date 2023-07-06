@@ -76,8 +76,8 @@ export const BetForm: React.FC = () => {
           <div className="p-4">
             <h1 className="font-bold uppercase">Created Bets:</h1>
             <ul>
-              {betData.map((bet: Bet) => (
-                <Card key={bet.id} className="my-2 shadow">
+              {betData.map((bet: Bet, index: any) => (
+                <Card key={index} className="my-2 shadow">
                   <div className="flex space-x-2">
                     <h4 className="font-bold text-accent">Team 1:</h4>
                     <p>{bet.team1}</p>

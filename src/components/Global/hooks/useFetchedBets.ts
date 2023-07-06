@@ -22,7 +22,7 @@ export const useFetchedBets = () => {
     const loadedMatches: Bet[] = [];
     for (const key in data) {
       loadedMatches.push({
-        id: data[key].id,
+        id: key,
         team1: data[key].team1,
         team2: data[key].team2,
         odd1: data[key].odd1,

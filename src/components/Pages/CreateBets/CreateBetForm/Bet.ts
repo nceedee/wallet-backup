@@ -1,5 +1,6 @@
+import { ReactNode } from "react";
 export interface Bet {
-  id?: string;
+  id: ReactNode;
   team1: string;
   team2: string;
   odd1: number;

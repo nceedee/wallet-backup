@@ -1,5 +1,5 @@
-import { AiOutlineUserAdd, AiOutlineUsergroupAdd } from "react-icons/ai";
-import { MdOutlineDashboard } from "react-icons/md";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { MdOutlineCreateNewFolder, MdOutlineDashboard } from "react-icons/md";
 import { TbEyeEdit } from "react-icons/tb";
 
 export const menus = [
