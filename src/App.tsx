@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { IUser } from "./base";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
 import Login from "./components/Pages/Login/Login";
 import { Signup } from "./components/Pages/SignUp/SignUp";
@@ -10,8 +11,23 @@ const App = () => {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((responseUser: any) => {
+      const displayName = responseUser.displayName;
+      const uid = responseUser.uid;
+      const reloadUserInfo = responseUser.reloadUserInfo;
+
+      const user: IUser = {
+        uid,
+        displayName,
+        email: reloadUserInfo.email,
+        createdAt: reloadUserInfo.createdAt,
+        emailVerified: reloadUserInfo.emailVerified,
+        lastLoginAt: reloadUserInfo.lastLoginAt,
+        lastRefreshAt: reloadUserInfo.lastRefreshAt,
+        photoUrl: reloadUserInfo.photoUrl,
+      };
       if (user) {
+        console.log(user);
         setUserName(user.displayName || "loading...");
       } else {
         setUserName("Sign Up");
