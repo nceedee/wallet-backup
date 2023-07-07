@@ -13,7 +13,7 @@ export const Signup = () => {
     email,
     emailHanlder,
     fullname,
-    fullnameHanlder,
+    fullnameHandler,
     password,
     passwordHanlder,
     errorMsg,
@@ -34,7 +34,7 @@ export const Signup = () => {
               <Input
                 id="fullname"
                 type="text"
-                onChange={fullnameHanlder}
+                onChange={fullnameHandler}
                 placeholder="Enter fullname address"
                 value={fullname}
               />

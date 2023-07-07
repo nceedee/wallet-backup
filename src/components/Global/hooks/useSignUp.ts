@@ -14,7 +14,7 @@ export const useSignUp = () => {
   const [successMsg, setSuccessMsg] = useState<string>("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const setUser = useUser(state => state.setUser);
-  const fullnameHanlder = (e: any) => {
+  const fullnameHandler = (e: any) => {
     setFullname(e.target.value);
   };
 
@@ -78,7 +78,7 @@ export const useSignUp = () => {
   return {
     handleSubmission,
     fullname,
-    fullnameHanlder,
+    fullnameHandler,
     email,
     emailHanlder,
     password,

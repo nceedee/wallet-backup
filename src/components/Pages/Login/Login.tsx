@@ -56,10 +56,10 @@ function Login() {
                 Login
               </Button>
               <p className="font-bold text-black ">
-                Already have an account?{" "}
+                Dont have an account?{" "}
                 <span>
                   <Link to="/signup" className="leading-1 font-xl font-bold text-secondary decoration-0">
-                    Sign up
+                    Log In
                   </Link>
                 </span>
               </p>

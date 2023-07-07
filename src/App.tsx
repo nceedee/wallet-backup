@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { IUser } from "./base";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
 import Login from "./components/Pages/Login/Login";
@@ -27,8 +27,10 @@ const App = () => {
         photoUrl: reloadUserInfo.photoUrl,
       };
       if (user) {
-        console.log(user);
         setUserName(user.displayName || "loading...");
+      }
+      if (!user) {
+        return <Navigate to="/" state={{ from: location }} replace />;
       } else {
         setUserName("Sign Up");
       }
