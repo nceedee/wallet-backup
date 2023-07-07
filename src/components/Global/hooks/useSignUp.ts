@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IUser, useUser } from "../../../base";
+import { useUser } from "../../../base";
 import { auth } from "../../../config/firebase";
 
 export const useSignUp = () => {
@@ -39,27 +39,12 @@ export const useSignUp = () => {
       const res = createUserWithEmailAndPassword(auth, email, password).then(async (res: any) => {
         setSubmitButtonDisabled(false);
         const responseUser = res.user;
-        const displayName = responseUser.displayName;
-        const uid = responseUser.uid;
-        const reloadUserInfo = responseUser.reloadUserInfo;
 
-        const user: IUser = {
-          uid,
-          displayName,
-          email: reloadUserInfo.email,
-          createdAt: reloadUserInfo.createdAt,
-          emailVerified: reloadUserInfo.emailVerified,
-          lastLoginAt: reloadUserInfo.lastLoginAt,
-          lastRefreshAt: reloadUserInfo.lastRefreshAt,
-          photoUrl: reloadUserInfo.photoUrl,
-        };
-
-        setUser(user);
+        location.href = "/dashboard";
         setSuccessMsg("account created successfully");
         await updateProfile(responseUser, {
           displayName: fullname,
         });
-        navigate("/dashboard");
       });
     } catch (err: any) {
       setSubmitButtonDisabled(false);

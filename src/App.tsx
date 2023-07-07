@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { IUser } from "./base";
+import { IUser, useUser } from "./base";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
 import Login from "./components/Pages/Login/Login";
 import { Signup } from "./components/Pages/SignUp/SignUp";
@@ -8,29 +8,27 @@ import { TransactionHistory } from "./components/Pages/TransactionHistory/Transa
 import { auth } from "./config/firebase";
 
 const App = () => {
-  const [userName, setUserName] = useState("");
+  const setUser = useUser(state => state.setUser);
 
   useEffect(() => {
     auth.onAuthStateChanged((responseUser: any) => {
-      const displayName = responseUser.displayName;
-      const uid = responseUser.uid;
-      const reloadUserInfo = responseUser.reloadUserInfo;
+      if (responseUser) {
+        const displayName = responseUser.displayName;
+        const uid = responseUser.uid;
+        const reloadUserInfo = responseUser.reloadUserInfo;
 
-      const user: IUser = {
-        uid,
-        displayName,
-        email: reloadUserInfo.email,
-        createdAt: reloadUserInfo.createdAt,
-        emailVerified: reloadUserInfo.emailVerified,
-        lastLoginAt: reloadUserInfo.lastLoginAt,
-        lastRefreshAt: reloadUserInfo.lastRefreshAt,
-        photoUrl: reloadUserInfo.photoUrl,
-      };
-      if (user) {
-        console.log(user);
-        setUserName(user.displayName || "loading...");
-      } else {
-        setUserName("Sign Up");
+        const user: IUser = {
+          uid,
+          displayName,
+          email: reloadUserInfo.email,
+          createdAt: reloadUserInfo.createdAt,
+          emailVerified: reloadUserInfo.emailVerified,
+          lastLoginAt: reloadUserInfo.lastLoginAt,
+          lastRefreshAt: reloadUserInfo.lastRefreshAt,
+          photoUrl: reloadUserInfo.photoUrl,
+        };
+
+        setUser(user);
       }
     });
   }, []);
@@ -41,8 +39,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard name={userName} />} />
-          <Route path="/transaction-history" element={<TransactionHistory name={userName} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/transaction-history" element={<TransactionHistory />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
