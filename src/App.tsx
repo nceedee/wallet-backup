@@ -1,18 +1,33 @@
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { SideBar } from "./components/Layouts/SideBar/SideBar";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
+import Login from "./components/Pages/Login/Login";
+import { Signup } from "./components/Pages/SignUp/SignUp";
 import { TransactionHistory } from "./components/Pages/TransactionHistory/TransactionHistory";
+import { auth } from "./config/firebase";
 
 const App = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        setUserName(user.displayName || "loading...");
+      } else {
+        setUserName("Sign Up");
+      }
+    });
+  }, []);
+
   return (
-    <div className="flex h-[100vh] w-full  bg-primary font-inter tracking-wide">
-      <div>
-        <SideBar />
-      </div>
-      <div className="w-full overflow-y-scroll">
+    <div className="flex h-[100vh] w-full bg-primary font-inter tracking-wide">
+      <div className="w-full">
         <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
-          <Route path="transaction-history" element={<TransactionHistory />}></Route>
+          <Route path="/" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard name={userName} />} />
+          <Route path="/transaction-history" element={<TransactionHistory name={userName} />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>
