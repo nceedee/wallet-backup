@@ -9,7 +9,7 @@ import { Card } from "../../Global/Card/Card";
 import { MaxCard } from "../../Global/Card/MaxCard/MaxCard";
 import { useLogIn } from "../../Global/hooks/useLoginIn";
 
-function Login() {
+export const Login = () => {
   const {
     handleSubmission,
     email,
@@ -69,6 +69,4 @@ function Login() {
       </MaxCard>
     </div>
   );
-}
-
-export default Login;
+};

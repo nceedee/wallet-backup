@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { IUser } from "./base";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
-import Login from "./components/Pages/Login/Login";
+import { Login } from "./components/Pages/Login/Login";
 import { Signup } from "./components/Pages/SignUp/SignUp";
 import { TransactionHistory } from "./components/Pages/TransactionHistory/TransactionHistory";
 import { auth } from "./config/firebase";
 
+import { useNavigate } from "react-router-dom";
+
 const App = () => {
   const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((responseUser: any) => {
@@ -28,14 +31,13 @@ const App = () => {
       };
       if (user) {
         setUserName(user.displayName || "loading...");
+        navigate("/dashboard");
       }
       if (!user) {
-        return <Navigate to="/" state={{ from: location }} replace />;
-      } else {
-        setUserName("Sign Up");
+        navigate("/login");
       }
     });
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="flex h-[100vh] w-full bg-primary font-inter tracking-wide">
