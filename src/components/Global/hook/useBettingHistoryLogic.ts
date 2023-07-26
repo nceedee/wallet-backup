@@ -27,15 +27,32 @@ export const useBettingHistoryLogic = () => {
     setBetAmountInput(e.target.value);
   };
 
-  const hanldePaymentForBet = async () => {
-    const newBalance = balanceContext.balance - Number(betBetAmoutInput);
+  const checkBal = () => {
     if (Number(betBetAmoutInput) > balanceContext.balance || !Number(betBetAmoutInput)) {
-      setError(true); // Show the message when the user clicks the button
+      setError(true);
       setTimeout(() => {
         setError(false);
       }, 1000);
       queryClient.invalidateQueries("userbalance");
-      return;
+      return false;
+    }
+  };
+
+  const checkBalOk = () => {
+    if (Number(betBetAmoutInput)) {
+      return true;
+    }
+  };
+
+  const hanldePaymentForBet = async () => {
+    const newBalance = balanceContext.balance - Number(betBetAmoutInput);
+    if (Number(betBetAmoutInput) > balanceContext.balance || !Number(betBetAmoutInput)) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 1000);
+      queryClient.invalidateQueries("userbalance");
+      return false;
     }
     setPaymentSuccess(true);
 
@@ -77,5 +94,7 @@ export const useBettingHistoryLogic = () => {
     onSuccess,
     paymentSuccess,
     setShowMessageNotifaction,
+    checkBal,
+    checkBalOk,
   };
 };
