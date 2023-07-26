@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useQueryClient } from "react-query";
 import { BalanceContext } from "../../context/Balancecontext/BalanceContext";
+import { useDeletedBet } from "./useDeletedBet";
 import { usePost } from "./usePost";
 
 export const useBettingHistoryLogic = () => {
@@ -15,6 +16,7 @@ export const useBettingHistoryLogic = () => {
   const balanceContext = useContext(BalanceContext);
   const queryClient = useQueryClient();
   const { post, isLoading, onSuccess } = usePost();
+  const { handleLocalDeleteBet } = useDeletedBet();
   const date = `${new Date().getMinutes()}:${new Date().getSeconds()}`;
 
   const handlePlayClick = (bet: any) => {
@@ -27,24 +29,7 @@ export const useBettingHistoryLogic = () => {
     setBetAmountInput(e.target.value);
   };
 
-  const checkBal = () => {
-    if (Number(betBetAmoutInput) > balanceContext.balance || !Number(betBetAmoutInput)) {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 1000);
-      queryClient.invalidateQueries("userbalance");
-      return false;
-    }
-  };
-
-  const checkBalOk = () => {
-    if (Number(betBetAmoutInput)) {
-      return true;
-    }
-  };
-
-  const hanldePaymentForBet = async () => {
+  const hanldePaymentForBet = async (betId: string) => {
     const newBalance = balanceContext.balance - Number(betBetAmoutInput);
     if (Number(betBetAmoutInput) > balanceContext.balance || !Number(betBetAmoutInput)) {
       setError(true);
@@ -55,7 +40,7 @@ export const useBettingHistoryLogic = () => {
       return false;
     }
     setPaymentSuccess(true);
-
+    handleLocalDeleteBet(betId);
     setNewBalance(newBalance);
     await post("userbalance", { amount: newBalance });
     await post("placedbetamount", {
@@ -72,6 +57,7 @@ export const useBettingHistoryLogic = () => {
     setTimeout(() => {
       setShowMessageNotifaction(false);
     }, 1000);
+    window.location.reload();
     queryClient.invalidateQueries("userbalance");
   };
 
@@ -94,7 +80,5 @@ export const useBettingHistoryLogic = () => {
     onSuccess,
     paymentSuccess,
     setShowMessageNotifaction,
-    checkBal,
-    checkBalOk,
   };
 };

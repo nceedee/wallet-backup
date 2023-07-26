@@ -27,20 +27,12 @@ export const AddToFavourite = () => {
     isLoading: loading,
   } = useBettingHistoryLogic();
 
-  const {
-    handleDeleteBet,
-    openModal,
-    setOpenModal,
-    showMessage,
-    loading: load,
-    handleLocalDeleteBet,
-    deletedBetIds,
-  } = useDeletedBet();
+  const { handleDeleteBet, openModal, setOpenModal, showMessage, loading: load, deletedBetIds } = useDeletedBet();
 
   const { betData, isLoading } = useFetchPlacedBet();
   const balanceContext = useContext(BalanceContext);
 
-  if (betData.length === 0) {
+  if (betData.length === 0 || betData.every((bet: any) => deletedBetIds.includes(bet.id))) {
     return (
       <div className="text-center">
         <p>Your betslip is empty. Please make one or more selections in order to place a bet.</p>
@@ -48,10 +40,9 @@ export const AddToFavourite = () => {
     );
   }
 
-  const handleDeleteBetAndPayment = (betId: string) => {
-    hanldePaymentForBet();
+  const handleDeleteBetAndPayment = async (betId: string) => {
+    hanldePaymentForBet(betId);
     setShowMessageNotifaction(false);
-    handleLocalDeleteBet(betId); // Call the local deletion function
   };
 
   return (
