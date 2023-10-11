@@ -1,10 +1,14 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { useGetWithId } from "../../Global/hook/useGetWithId";
 import { LoadingModal } from "../../Global/LoadingModal/LoadingModal";
 
-export const Notifications = () => {
+interface INotify {
+  className?: ReactNode;
+}
+
+export const Notifications = ({ className }: INotify) => {
   const { data, isLoading, isSuccess } = useGetWithId("transactionHistory");
   const rows = useMemo(() => (data?.data ? Object.values(data.data) : []), [data]);
 
@@ -16,7 +20,7 @@ export const Notifications = () => {
   }
   if (isSuccess) {
     return (
-      <div className="sm:mt-20 md:mt-0">
+      <div className={`sm:mt-20 md:mt-0  ${className}`}>
         {rows.map((transaction: any) => (
           <Accordion key={transaction.id}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { SignUpFormInput, User } from "../../../base";
+import { API } from "../../../base/constant/constant";
 import { auth } from "../../../config/firebase";
 import { AuthContext } from "../../context/AuthContext";
 export const useSignup = () => {
@@ -15,6 +16,7 @@ export const useSignup = () => {
   const { dispatch } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [showBonusAlert, setShowBonusAlert] = useState(false);
 
   const onSubmit: SubmitHandler<SignUpFormInput> = async data => {
     try {
@@ -32,7 +34,7 @@ export const useSignup = () => {
         await updateProfile(auth.currentUser, { displayName: data.name });
 
         // Add user details to the Realtime Database
-        await fetch("https://gobet-admin-dashboard-default-rtdb.firebaseio.com/users.json", {
+        await fetch(`${API}/users.json`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -44,8 +46,16 @@ export const useSignup = () => {
           }),
         });
         dispatch({ type: "LOGIN", payload: user });
-        navigate("/dashboard");
-        window.location.reload();
+
+        // Show the bonus alert
+        setShowBonusAlert(true);
+
+        // Hide the alert after 5 seconds
+        setTimeout(() => {
+          setShowBonusAlert(false);
+          navigate("/dashboard");
+          window.location.reload();
+        }, 5000);
       }
     } catch (error: any) {
       setIsError(error.message);
@@ -53,5 +63,5 @@ export const useSignup = () => {
     }
   };
 
-  return { handleSubmit, onSubmit, register, isError, isLoading };
+  return { handleSubmit, onSubmit, register, isError, isLoading, showBonusAlert };
 };

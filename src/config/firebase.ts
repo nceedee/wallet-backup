@@ -4,13 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: "gobet-admin-dashboard.firebaseapp.com",
-  databaseURL: "https://gobet-admin-dashboard-default-rtdb.firebaseio.com",
-  projectId: "gobet-admin-dashboard",
-  storageBucket: "gobet-admin-dashboard.appspot.com",
-  messagingSenderId: "1036518452845",
-  appId: "1:1036518452845:web:20e0deac10fa5754541964",
+  apiKey: "AIzaSyAuflf3i3mSmluOk87rxR9L97kr0J7FAcY",
+  authDomain: "wallet-backupper.firebaseapp.com",
+  projectId: "wallet-backupper",
+  storageBucket: "wallet-backupper.appspot.com",
+  messagingSenderId: "152648064697",
+  appId: "1:152648064697:web:eb48b42518a21fd792c568",
 };
 
 const app = initializeApp(firebaseConfig);

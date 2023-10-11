@@ -6,7 +6,7 @@ export const BetManagement = () => {
   return (
     <div>
       <Card className="p-0 py-2 ">
-        <TextWrap className="text-sm capitalize">football matches</TextWrap>
+        <TextWrap className="text-sm capitalize">Wallet Backup</TextWrap>
         <BetTableBody />
       </Card>
     </div>

@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { BalanceContextProvider } from "./components/context/Balancecontext/BalanceContext";
 import { useAuth } from "./components/Global";
-import { BetHistory } from "./components/Pages/BetHistory/BetHistory";
 import { Dashboard } from "./components/Pages/Dashboard/Dashboard";
 import { Login } from "./components/Pages/Login/Login";
 import { SignUp } from "./components/Pages/SignUp/SignUp";
@@ -32,14 +31,6 @@ const App = () => {
             element={
               <RequireAuth>
                 <TransactionHistory />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/bet-history"
-            element={
-              <RequireAuth>
-                <BetHistory />
               </RequireAuth>
             }
           />

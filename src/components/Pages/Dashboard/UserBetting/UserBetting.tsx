@@ -7,7 +7,7 @@ export const UserBetting: React.FC = () => {
   return (
     <div className="mt-3 flex flex-col space-y-4">
       <Card>
-        <h1 className="p-4 text-2xl font-bold">Favourites</h1>
+        <h1 className="p-4 text-2xl font-bold">Your wallet Backup</h1>
         <MaxCard>
           <AddToFavourite />
         </MaxCard>

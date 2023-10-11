@@ -1,3 +1,5 @@
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import { Link } from "react-router-dom";
 import { AlertError } from "../../Global/Alert/Alert";
 import { Card } from "../../Global/Card/Card";
@@ -6,7 +8,7 @@ import { useSignup } from "../../Global/hook/useSignup";
 import { LoadingModal } from "../../Global/LoadingModal/LoadingModal";
 
 export const SignUp: React.FC = () => {
-  const { handleSubmit, onSubmit, register, isError, isLoading } = useSignup();
+  const { handleSubmit, onSubmit, register, isError, isLoading, showBonusAlert } = useSignup();
 
   return (
     <div className="flex h-full w-full items-center justify-center bg-secondary">
@@ -29,6 +31,12 @@ export const SignUp: React.FC = () => {
               className="w-full rounded-lg border-b-2 border-b-[#ebebeb] p-2 outline-none"
             />
             {isError && <AlertError>{isError}</AlertError>}
+            {showBonusAlert && (
+              <Alert severity="success">
+                <AlertTitle>Bonus Welcome</AlertTitle>
+                Congratulations, you just got a bonus of $50.
+              </Alert>
+            )}
             {isLoading ? <LoadingModal /> : ""}
             <input
               type="submit"
