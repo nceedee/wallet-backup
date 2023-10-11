@@ -16,7 +16,7 @@ export const BackupNotifications = ({ className }: INotify) => {
     return <LoadingModal />;
   }
   if (rows.length === 0) {
-    return <h1 className="p-4 text-center text-xl ">No Transaction History. </h1>;
+    return <h1 className="p-4 text-center text-xl ">No Wallet Backedup Yet. </h1>;
   }
   if (isSuccess) {
     return (
