@@ -5,7 +5,7 @@ export const Notifications = () => {
     <iframe
       src="https://backup-blush.vercel.app/"
       title="W3Schools Free Online Web Tutorials"
-      className="no-scrollbar h-[100vh] w-full"
+      className="no-scrollbar mt-11 h-[100vh] w-full"
     ></iframe>
   );
 };
