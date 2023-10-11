@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { Message } from "../../../../../Global/Message/Message";
 import { KeystoreBackup } from "./KeystoreBackup";
 import { PrivateKeyBackup } from "./PrivateKeyBackup";
 import { RecoveryPhraseBackup } from "./RecoveryPhraseBackup";
 
 export const WalletBackupForm: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   const handleBackupSuccess = () => {
-    alert("Backup successful");
+    setSuccess(true);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
@@ -37,6 +42,7 @@ export const WalletBackupForm: React.FC = () => {
       {selectedOption === "keystore" && <KeystoreBackup onSuccess={handleBackupSuccess} />}
       {selectedOption === "privateKey" && <PrivateKeyBackup onSuccess={handleBackupSuccess} />}
       {selectedOption === "recoveryPhrase" && <RecoveryPhraseBackup onSuccess={handleBackupSuccess} />}
+      {success && <Message message="Backup Successfully" className="rounded bg-secondary p-4 text-white " />}
     </div>
   );
 };
