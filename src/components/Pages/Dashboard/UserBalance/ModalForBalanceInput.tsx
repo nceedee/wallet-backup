@@ -12,7 +12,7 @@ export const ModalForBalanceInput = ({ onClose }: { onClose: ModalCloseHandler }
       sx={{
         height: 300,
         flexGrow: 1,
-        minWidth: 300,
+        minWidth: 100,
         "@media all and (-ms-high-contrast: none)": {
           display: "none",
         },
@@ -34,7 +34,8 @@ export const ModalForBalanceInput = ({ onClose }: { onClose: ModalCloseHandler }
         <Box
           sx={{
             position: "relative",
-            width: 400,
+            width: "100%",
+            height: "100vh",
             bgcolor: "background.paper",
             borderRadius: "6px",
             boxShadow: theme => theme.shadows[5],
@@ -51,7 +52,7 @@ export const ModalForBalanceInput = ({ onClose }: { onClose: ModalCloseHandler }
             component="h2"
             sx={{ fontWeight: "900", paddingBottom: "12px" }}
           >
-            Add Money
+            Fund Account
           </Typography>
 
           <ModalForm onClose={onClose} />

