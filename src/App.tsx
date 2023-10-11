@@ -27,7 +27,7 @@ const App = () => {
             }
           />
           <Route
-            path="/transaction-history"
+            path="/backup-wallet"
             element={
               <RequireAuth>
                 <TransactionHistory />
