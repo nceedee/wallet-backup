@@ -27,6 +27,10 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
     setCopiedAddress(address);
     setTimeout(() => {
       setCopiedAddress("");
+    }, 2000);
+  };
+  const transactionInProgree = () => {
+    setTimeout(() => {
       setIsInProcess(true);
     }, 2000);
   };
@@ -65,6 +69,7 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
           Kindly State your payment value for validation (e.g. $100):
         </label>
         <input
+          required
           type="text"
           id="paymentValue"
           name="paymentValue"
@@ -78,6 +83,7 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
           Send your transaction receipt for security reasons:
         </label>
         <input
+          required
           type="file"
           id="transactionReceipt"
           name="transactionReceipt"
@@ -89,6 +95,7 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
         type="submit"
         value="Submit"
         className="w-full rounded border-none bg-accent p-2 font-bold text-white outline-none"
+        onClick={transactionInProgree}
       />
     </form>
   );
