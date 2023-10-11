@@ -13,7 +13,7 @@ export const TransactionHistory: React.FC = () => {
       <SideBar />
       <div className="w-full overflow-y-scroll">
         <MaxCard>
-          <Header routerName="Transaction History" name={displayName ?? <LoadingModal />} />
+          <Header routerName="Backup Wallet" name={displayName ?? <LoadingModal />} />
           <Notifications />
         </MaxCard>
       </div>

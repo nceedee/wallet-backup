@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { uid } from "../../../../base/stores/stores";
+import { MaxCard } from "../../../Global/Card/MaxCard/MaxCard";
 import { Message } from "../../../Global/Message/Message";
 
 type ModalCloseHandler = () => void;
@@ -77,16 +78,19 @@ export const ModalForm = ({ onClose }: { onClose: ModalCloseHandler }) => {
           <label htmlFor="cryptoAddress" className="font-bold text-white">
             Choose Crypto Address:
           </label>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <MaxCard className="mt-3 flex flex-wrap gap-2">
             {cryptoAddresses.map(crypto => (
-              <div key={crypto.label} className="flex items-center rounded-lg border border-gray-300 p-2">
+              <div
+                key={crypto.label}
+                className="flex items-center rounded-lg border border-gray-300 p-2 sm:text-[6px] md:text-[12px] lg:text-[16px]"
+              >
                 <div className="cursor-pointer" onClick={() => onCopyAddress(crypto.address)}>
                   {copiedAddress === crypto.address ? "Text Copied" : crypto.label}
                 </div>
                 <div className="ml-2 text-gray-500">{crypto.address}</div>
               </div>
             ))}
-          </div>
+          </MaxCard>
         </div>
       </div>
 
